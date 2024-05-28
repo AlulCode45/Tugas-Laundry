@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('invoice_id')->references('invoice')->on('id');
+            $table->foreignId('invoice_id')->references('id')->on('invoice')->cascadeOnDelete();
             $table->string('nama_barang');
             $table->integer('berat');
             $table->integer('harga_perkilo');

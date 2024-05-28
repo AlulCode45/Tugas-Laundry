@@ -9,5 +9,11 @@ Route::get('/', [AuthController::class, 'LoginView']);
 Route::post('login', [AuthController::class, 'Login']);
 
 Route::middleware(KasirMiddleware::class)->group(function () {
-    Route::get('/kasir', [KasirController::class, 'Dashboard']);
+    Route::get('/logout', [AuthController::class, 'Logout']);
+    Route::prefix('/kasir')->group(function () {
+        Route::get('/', [KasirController::class, 'Dashboard']);
+        Route::get('/kelola-pemesanan', [KasirController::class, 'KelolaPemesanan']);
+        Route::get('/kelola-laporan', [KasirController::class, 'KelolaLaporan']);
+        Route::get('/kelola-invoice', [KasirController::class, 'KelolaInvoice']);
+    });
 });

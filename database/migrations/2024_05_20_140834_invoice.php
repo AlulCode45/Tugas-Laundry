@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('invoice', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_invoice')->unique();
+            $table->string('kode_order')->unique();
             $table->string('nama_pembeli');
             $table->string('alamat_pembeli');
-            $table->date('tanggal');
+            $table->date('tanggal_diterima');
+            $table->date('tanggal_selesai');
             $table->enum('status', ['selesai', 'proses', 'diterima'])->default('diterima');
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('invoice');
+        Schema::dropIfExists('pemesanan');
     }
 };

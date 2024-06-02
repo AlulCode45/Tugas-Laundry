@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order', function (Blueprint $table) {
+        Schema::create('data_order', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('invoice_id')->references('id')->on('invoice')->cascadeOnDelete();
+            $table->foreignId('order_id')->references('id')->on('orders')->cascadeOnDelete();
             $table->string('nama_barang');
             $table->integer('berat');
             $table->integer('harga_perkilo');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order');
+        Schema::dropIfExists('barang_pesanan');
     }
 };

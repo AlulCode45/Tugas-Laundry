@@ -19,6 +19,8 @@ class AuthController extends Controller
         if ($user and Hash::check($request->password, $user->password)) {
             Auth::login($user);
             return redirect()->to('/kasir');
+        } else {
+            return redirect()->to('/')->with('failed', 'Username / Password salah');
         }
     }
     function Logout()
